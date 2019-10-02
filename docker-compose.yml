@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+
+  nginx:
+    build:
+      context: ./containers/nginx
+      dockerfile: Nginx.Dockerfile
+    ports:
+      - 8099:80
+    links:
+      - fpm
+    volumes:
+      - ./app:/var/www/app
+
+  fpm:
+    build:
+      context: ./containers/fpm
+      dockerfile: Fpm.Dockerfile
+    volumes:
+      - ./app:/var/www/app
+    links:
+      - db
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./databases:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
