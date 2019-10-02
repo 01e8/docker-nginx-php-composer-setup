@@ -1,4 +1,4 @@
-# docker-nginx-php-composer-setup
+# How to use
 
 ## Quick start
 
@@ -10,18 +10,18 @@ docker-compose up -d
 2. Open
 http://localhost:8099/
 
-2.5 Put yours project in "app" folder
+3. Put yours project in "app" folder
 
 ## Databases
 
 Adminer panel:
 http://localhost:8080/
-System: MySQL
-Server: db
-User: root
-Pass: root
+- System: MySQL
+- Server: db
+- User: root
+- Pass: root
 
-Laravel **.env** file
+For Laravel **.env** file
 ```
 ...
 DB_CONNECTION=mysql
@@ -39,12 +39,14 @@ You can work into php-fpm container and use **composer** and **git**.
 
 1. Find out the name of the php-fpm container
 
-Input:
 ```
+Input:
+
 docker ps
 ```
-Output:
 ```
+Output:
+
 CONTAINER ID        IMAGE                                   COMMAND                  CREATED             STATUS              PORTS                    NAMES
 c0cb369a9d53        docker-nginx-php-composer-setup_nginx   "nginx -g 'daemon of…"   33 minutes ago      Up 33 minutes       0.0.0.0:8099->80/tcp     docker-nginx-php-composer-setup_nginx_1
 ef522233cd5e        docker-nginx-php-composer-setup_fpm     "docker-php-entrypoi…"   33 minutes ago      Up 33 minutes       9000/tcp                 docker-nginx-php-composer-setup_fpm_1
@@ -58,21 +60,20 @@ e46e0cb15ca4        mysql                                   "docker-entrypoint.s
 docker exec -it docker-nginx-php-composer-setup_fpm_1 bash
 ```
 
-Now we can install Laravel:
+3. Now you can install Laravel:
 ```
 cd /var/www/app
-rm index.php
 composer create-project --prefer-dist laravel/laravel ./
 ln -s ./public/index.php index.php
 ```
 
-Or clone your project from git
+4. Or clone your project from git
 ```
 cd /var/www/app
 git clone https://github.com/user/project.git .
 ```
 
-## Problems
+## Problems?
 
 If you have trouble with app folder permissions
 ```
