@@ -9,7 +9,7 @@ docker-compose up -d
 ```
 2. Check http://localhost:8099/
 
-3. Put yours project in **"app"** folder
+3. Put your project in **"app"** folder
 
 ## Databases
 
