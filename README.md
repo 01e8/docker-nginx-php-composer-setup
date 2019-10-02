@@ -7,10 +7,9 @@
 docker-compose build
 docker-compose up -d
 ```
-2. Open
-http://localhost:8099/
+2. Check http://localhost:8099/
 
-3. Put yours project in "app" folder
+3. Put yours project in **"app"** folder
 
 ## Databases
 
@@ -55,7 +54,7 @@ e46e0cb15ca4        mysql                                   "docker-entrypoint.s
 
 ```
 
-2 Execute bash
+2. Execute bash
 ```
 docker exec -it docker-nginx-php-composer-setup_fpm_1 bash
 ```
